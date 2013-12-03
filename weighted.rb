@@ -12,7 +12,7 @@ class Weighted
 		return_vals = []
 		return_val = 0
 		count.times do
-			r = rand(@sum_weights)
+			r = rand(1..@sum_weights)
 			@intervals.keys.each { |key| return_val = @intervals[key] if r >= key }
 			return_vals << return_val
 		end

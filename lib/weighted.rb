@@ -1,10 +1,14 @@
 class Weighted
-	attr_accessor :items, :sum_weights, :intervals
+	attr_accessor :sum_weights, :intervals
+	attr_reader :items
 
 	def initialize(items)
 		@items = items
-		@sum_weights = 0
-		@intervals = {}
+		generate_intervals_sum_weights
+	end
+
+	def items=(items)
+		@items = items
 		generate_intervals_sum_weights
 	end
 
@@ -20,6 +24,8 @@ class Weighted
 	end
 
 	def generate_intervals_sum_weights
+		@sum_weights = 0
+		@intervals = {}
 		@items.each_pair do |key, value|
 			@sum_weights += value
 			@intervals[@sum_weights] = key
